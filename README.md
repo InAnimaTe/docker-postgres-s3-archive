@@ -23,7 +23,6 @@ docker run --link postgres:postgres inanimate/postgres-s3-archive
 
 ##### *Required*
 
-* `POSTGRES_PORT_5432_TCP_ADDR` - This isn't provided by you directly but [instead](https://docs.docker.com/compose/env/) the `postgres` container you link!
 * `AWS_ACCESS_KEY_ID` - AWS S3 access key.
 * `AWS_SECRET_ACCESS_KEY` - AWS S3 secret key.
 * `BUCKET` - AWS S3 bucket (and folder) to store the backup. i.e. `s3://herpderpbucket/folder`
@@ -31,7 +30,9 @@ docker run --link postgres:postgres inanimate/postgres-s3-archive
 
 ##### *Optional*
 
-* `TIMEOUT` - how often perform backup, in seconds. (default: `86400`)
+* `PGHOST/PGPORT` - Two variables which can be set to specify the usage of a different container or postgres server (meaning you aren't linking). (default: HOST and PORT of the container you link.)
+* `PGUSER` - The database user to connect as (default: `postgres`)
+* `TIMEOUT` - How often perform backup, in seconds. (default: `86400`)
 * `NAME_PREFIX` - A prefix in front of the date i.e. `jira-data-dir-backup` (default: `database-archive`)
 * `GPG_COMPRESSION_LEVEL` - The compression level for gpg to use (0-9). (default: `0`; *not recommended since we're using xz*)
 * `XZ_COMPRESSION_LEVEL` - The compression level for xz (lzma2) to use (0-9). (default: `9`; *this is the best compression level*)
