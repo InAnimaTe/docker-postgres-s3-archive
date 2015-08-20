@@ -6,7 +6,7 @@ RUN apt-get update \
 RUN curl -sSL https://bootstrap.pypa.io/get-pip.py | python
 RUN pip install awscli
 
-ADD run /app/run
-RUN chmod +x /app/run
+ADD run.sh /app/run.sh
+RUN chmod +x /app/run.sh
 
 CMD ["/app/run.sh"]
