@@ -32,6 +32,9 @@ docker run --link postgres:postgres inanimate/postgres-s3-archive
 
 * `PGHOST/PGPORT` - Two variables which can be set to specify the usage of a different container or postgres server (meaning you aren't linking). (default: HOST and PORT of the container you link.)
 * `PGUSER` - The database user to connect as (default: `postgres`)
+
+> We assume the user provided has full access without a password needed. Please make sure this exists and your server allows this user to login from the same network segment.
+
 * `TIMEOUT` - How often perform backup, in seconds. (default: `86400`)
 * `NAME_PREFIX` - A prefix in front of the date i.e. `jira-data-dir-backup` (default: `database-archive`)
 * `GPG_COMPRESSION_LEVEL` - The compression level for gpg to use (0-9). (default: `0`; *not recommended since we're using xz*)
