@@ -1,7 +1,7 @@
 #!/bin/bash -e
 
-PGHOST=${PGHOST:-$POSTGRES_PORT_5432_TCP_ADDR}
-PGPORT=${PGPORT:-$POSTGRES_PORT_5432_TCP_PORT}
+export PGHOST=${PGHOST:-$POSTGRES_PORT_5432_TCP_ADDR}
+export PGPORT=${PGPORT:-$POSTGRES_PORT_5432_TCP_PORT}
 
 : ${PGHOST:?"--link or hostname to a PostgreSQL container or server is not set"}
 : ${PGPORT:?"--link or port to a PostgreSQL container or server is not set"}
@@ -10,7 +10,7 @@ PGPORT=${PGPORT:-$POSTGRES_PORT_5432_TCP_PORT}
 : ${BUCKET:?"BUCKET not specified"}
 : ${SYMMETRIC_PASSPHRASE:?"SYMMETRIC_PASSPHRASE not specified"}
 
-PGUSER=${PGUSER:-postgres}
+export PGUSER=${PGUSER:-postgres}
 TIMEOUT=${TIMEOUT:-86400}
 XZ_COMPRESSION_LEVEL=${XZ_COMPRESSION_LEVEL:-9}
 CIPHER_ALGO=${CIPHER_ALGO:-aes256}
