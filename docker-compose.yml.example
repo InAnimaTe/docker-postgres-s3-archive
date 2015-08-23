@@ -1,0 +1,22 @@
+postgresql:
+  image: sameersbn/postgresql:9.4-2
+  restart: always
+  volumes:
+    - /mnt/data/jira-postgresql:/var/lib/postgresql
+  environment:
+    - 'PSQL_TRUST_LOCALNET=true'
+    - 'DB_USER=jira'
+    - 'DB_PASS=DBSECUREPASSWORD'
+    - 'DB_NAME=jiradb'
+
+postgresqlbackup:
+    image: inanimate/postgres-s3-archive:1.0                              
+    restart: always
+    links:
+        - postgresql:postgres
+    environment:
+        - "AWS_ACCESS_KEY_ID=ACCESSKEYPLZ" 
+        - "AWS_SECRET_ACCESS_KEY=SECRETKEYPLZ"
+        - "BUCKET=s3://awesomebucketbr0/subdirectory"
+        - "SYMMETRIC_PASSPHRASE=SUPERDUPERSECUREPASSWORD"
+
