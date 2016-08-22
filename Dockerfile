@@ -1,4 +1,4 @@
-FROM postgres:latest
+FROM postgres:9.5
 
 RUN apt-get update \
     && DEBIAN_FRONTEND=noninteractive apt-get install -y -q curl gnupg xz-utils ca-certificates

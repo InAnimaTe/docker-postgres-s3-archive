@@ -3,6 +3,9 @@
 Taken from [siomiz/postgresql-s3](https://github.com/siomiz/PostgreSQL-S3), this image has the necessary utilties for you to perform continuous postgres backups to S3.
 The idea is here is to provide an easy ready-to-go way to dump an entire postgresql database, compress it, encrypt it, and push it to Amazon s3.
 
+> Please check the version/tag you pull of this image. If a version mismatch
+> occurs, pg_dumpall will not execute!
+
 ##### Features:
 
 * Symmetric Encryption via gpg
