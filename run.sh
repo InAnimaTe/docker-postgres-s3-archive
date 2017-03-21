@@ -19,6 +19,9 @@ NAME_PREFIX=${NAME_PREFIX:-database-archive}
 EXTENSION=${EXTENSION:-.psql.xz.gpg}
 AWSCLI_OPTIONS=${AWSCLI_OPTIONS:---sse}
 
+# Insert artificial sleep to help with parallel starts with psql.
+sleep 15s
+
 backup_and_stream_to_s3() {
 
 while true
